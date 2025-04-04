@@ -20,29 +20,30 @@ enum ResponseType {
 struct Answer {
     var text: String
     var type: AnimalType
+}
+
+enum AnimalType: Character {
+    case cat = "🐈", dog = "🐶", turtle = "🐢", rabbit = "🐰"
     
-}
-
-enum AnimalType {
-    case cat = 🐈, dog = 🐶, turtle = 🐢, rabbit = 🐰
-}
-
-var definition: String {
-    switch self {
-    case .dog:
-        return "A domesticated carnivorous mammal."
-    case .cat:
-        return "A small carnivorous mammal."
-    case .turtle:
-        return "A reptile with a hard shell."
-    case .rabbit:
-        return "A small carnivorous mammal."
+    var definition: String {
+        switch self {
+        case .dog:
+            return "You are incredibly outgoing."
+        case .cat:
+            return "You enjoy doing things on your own terms."
+        case .turtle:
+            return "You are wise beyond your years."
+        case .rabbit:
+            return "You love everything that's soft."
+        }
     }
 }
 
+
+
 var questions: [Question] = [
     Question(
-        text: "Which food do you like the most?",
+        test: "Which food do you like the most?",
         type: .single,
         answers: [
             Answer(text: "Steak", type: .dog),
@@ -52,7 +53,7 @@ var questions: [Question] = [
         ]
     ),
     Question(
-        text: "Which activities do you enjoy?",
+        test: "Which activities do you enjoy?",
         type: .single,
         answers: [
             Answer(text: "Eating", type: .dog),
@@ -62,7 +63,7 @@ var questions: [Question] = [
         ]
     ),
     Question(
-        text: "How much do you enjoy car rides?",
+        test: "How much do you enjoy car rides?",
         type: .single,
         answers: [
             Answer(text: "I love them", type: .dog),
@@ -71,8 +72,9 @@ var questions: [Question] = [
             Answer(text: "I barely notice them", type: .turtle),
         ]
     )
+]
 
-answers = [String: AnimalType]()
+//var answers = [String: AnimalType]()
 
 
 
