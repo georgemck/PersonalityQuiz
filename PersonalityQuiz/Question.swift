@@ -8,7 +8,7 @@
 import Foundation
 
 struct Question {
-    var test: String
+    var text: String
     var type: ResponseType
     var answers: [Answer]
 }
