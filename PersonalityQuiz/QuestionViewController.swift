@@ -55,15 +55,18 @@ class QuestionViewController: UIViewController {
         
         switch currentQuestion.type {
         case .single:
-            singleStackView.isHidden = false
+            updateSingleStack(answers: currentAnswers)
+            //singleStackView.isHidden = false
         case .multiple:
-            multipleStackView.isHidden = false
+            updateMultipleStack(answers: currentAnswers)
+//            multipleStackView.isHidden = false
         case .ranged:
-            rangedStackView.isHidden = false
+            updateRangeStack(answers: currentAnswers)
+//            rangedStackView.isHidden = false
         }
     }
     
-    func updateSingleStackView(answers: [Answer]){
+    func updateSingleStack(answers: [Answer]){
         singleStackView.isHidden = false
         singleButton1.setTitle(answers[0].text, for: .normal)
         singleButton2.setTitle(answers[1].text, for: .normal)
@@ -71,7 +74,7 @@ class QuestionViewController: UIViewController {
         singleButton4.setTitle(answers[3].text, for: .normal)
     }
     
-    func updateMultipleStackView(answers: [Answer]){
+    func updateMultipleStack(answers: [Answer]){
         multipleStackView.isHidden = false
         multiLabel1.text=answers[0].text
         multiLabel2.text=answers[1].text
@@ -79,9 +82,43 @@ class QuestionViewController: UIViewController {
         multiLabel4.text=answers[3].text
     }
     
-    func updateRangeStackView(answers: [Answer]){
+    func updateRangeStack(answers: [Answer]){
         rangedStackView.isHidden = false
         rangedLabel1.text=answers.first?.text
         rangedLabel2.text=answers.last?.text
     }
+    
+    var questions: [Question] = [
+        Question(
+            test: "Which food do you like the most?",
+            type: .single,
+            answers: [
+                Answer(text: "Steak", type: .dog),
+                Answer(text: "Fish", type: .cat),
+                Answer(text: "Carrots", type: .rabbit),
+                Answer(text: "Corn", type: .turtle),
+            ]
+        ),
+        Question(
+            test: "Which activities do you enjoy?",
+            type: .single,
+            answers: [
+                Answer(text: "Eating", type: .dog),
+                Answer(text: "Sleeping", type: .cat),
+                Answer(text: "Cuddling", type: .rabbit),
+                Answer(text: "Swimming", type: .turtle),
+            ]
+        ),
+        Question(
+            test: "How much do you enjoy car rides?",
+            type: .single,
+            answers: [
+                Answer(text: "I love them", type: .dog),
+                Answer(text: "I dislike them", type: .cat),
+                Answer(text: "I get a little nervous", type: .rabbit),
+                Answer(text: "I barely notice them", type: .turtle),
+            ]
+        )
+    ]
+
 }
